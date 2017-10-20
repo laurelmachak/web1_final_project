@@ -1,0 +1,8 @@
+<h1>Your Replies</h1>
+<a href="/replies/create">New Reply</a>
+{{#each replies}}
+  <a href='/replies/show/{{this._id}}'>
+    <p>{{this.response}}</p>
+    <h6>view reply</h6>
+  </a>
+{{/each}}
