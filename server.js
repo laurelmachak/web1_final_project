@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 var replies = require('./routes/replies');
 mongoose.Promise = global.Promise;
 
@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost/book-chat-2')
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.listen(3000, function () {

@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
-
+//to use req.body:
+var bodyParser = require('body-parser');
+// to use put rather then post:
+var methodOverride = require('method-override');
 // require that points to the Reply Controller
 var reply = require("../controllers/ReplyController.js");
 
+router.use(bodyParser.urlencoded({extended: true}));
+router.use(methodOverride('_method'));
 // all routes to CRUD functions:
 
 // Get all replies:
@@ -22,7 +27,7 @@ router.post('/replies/save', reply.save);
 router.get('/replies/edit/:id', reply.edit);
 
 // Edit update:
-router.post('/replies/update/:id', reply.update);
+router.put('/replies/update/:id', reply.update);
 
 // Delete reply:
 router.delete('/replies/delete/:id', reply.delete);

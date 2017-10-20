@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 //add model require:
 var Reply = require('../models/Reply.js');
 
+
 //create controller object for CRUD operations:
 var replyController = {};
 
@@ -40,8 +41,8 @@ replyController.create = function(req, res) {
 // save new reply function:
 replyController.save = function(req, res) {
   var reply = new Reply(req.body);
-
-  reply.save(function(err) {
+  //Reply.save(req.body, function(err,reply)
+  reply.save(function(err,reply) {
     if (err){
       console.log(err);
       res.render("../views/replies-create");
@@ -62,7 +63,7 @@ replyController.edit = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/replies/edit", {reply: reply});
+      res.render("../views/replies-edit", {reply: reply});
     }
   });
 };
@@ -73,9 +74,9 @@ replyController.update = function(req, res) {
   { new: true }, function (err, reply) {
     if (err) {
       console.log(err);
-      res.render("../views/replies/edit", {reply: req.body});
+      res.render("../views/replies-edit", {reply: req.body});
     }
-    res.redirect("/replies/show/"+reply._id);
+    res.redirect("/replies-show/"+reply._id);
   });
 };
 

@@ -3,6 +3,7 @@
 {{#each replies}}
   <a href='/replies/show/{{this._id}}'>
     <p>{{this.response}}</p>
-    <h6>view reply</h6>
+    <a href="/replies/edit/{{this._id}}">edit</a>
+
   </a>
 {{/each}}
